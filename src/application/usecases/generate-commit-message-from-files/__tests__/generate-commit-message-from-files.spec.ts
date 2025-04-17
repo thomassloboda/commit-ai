@@ -52,6 +52,6 @@ describe('GenerateCommitMessageFromFiles', () => {
     ]);
 
     expect(createSpinner).toHaveBeenCalledTimes(2);
-    expect(createSpinner).toHaveBeenCalledWith(false, 'Summarizing file1.ts...');
+    expect(createSpinner).toHaveBeenCalledWith(true, 'Summarizing file1.ts...');
   });
 });
