@@ -7,7 +7,10 @@ module.exports = {
       changelogFile: 'CHANGELOG.md'
     }],
     ['@semantic-release/npm', {
-      npmPublish: true
+      npmPublish: true,
+      publishConfig: {
+        access: 'public'
+      }
     }],
     ['@semantic-release/git', {
       assets: ['package.json', 'CHANGELOG.md'],
