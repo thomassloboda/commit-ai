@@ -1,9 +1,9 @@
-# 🧠 commit-ai
+# 🧠 @thomassloboda/commit-ai
 
-![npm version](https://img.shields.io/npm/v/commit-ai)
+![npm version](https://img.shields.io/npm/v/@thomassloboda/commit-ai)
 ![release](https://img.shields.io/github/v/release/votre-user/commit-ai?label=release)
-![license](https://img.shields.io/github/license/votre-user/commit-ai)
-![node](https://img.shields.io/node/v/commit-ai)
+![license](https://img.shields.io/github/license/votre-user/@thomassloboda/commit-ai)
+![node](https://img.shields.io/node/v/@thomassloboda/commit-ai)
 ![types](https://img.shields.io/badge/TypeScript-%E2%9C%93-blue)
 
 Version: `1.0.0`

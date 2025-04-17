@@ -19,6 +19,9 @@
     "gpt",
     "conventional commits"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "Thomas SLOBODA <thomas@sloboda.fr>",
   "license": "MIT",
   "description": "",
