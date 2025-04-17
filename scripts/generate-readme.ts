@@ -9,7 +9,7 @@ const readme = `# 🧠 ${name}
 
 ![npm version](https://img.shields.io/npm/v/${name})
 ![release](https://img.shields.io/github/v/release/thomassloboda/commit-ai?label=release)
-![license](https://img.shields.io/github/license/thomassloboda/${name})
+![license](https://img.shields.io/github/license/thomassloboda/commit-ai)
 ![node](https://img.shields.io/node/v/${name})
 ![types](https://img.shields.io/badge/TypeScript-%E2%9C%93-blue)
 

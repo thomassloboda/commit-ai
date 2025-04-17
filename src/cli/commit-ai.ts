@@ -27,7 +27,7 @@ async function main() {
     initConfigFile();
     process.exit(0);
   }
-  
+
   if (args.version || args.v) {
     console.log(`🧠 commit-ai version ${pkg.version}`);
     process.exit(0);
@@ -80,7 +80,7 @@ Tip: Add a .commit-ai/config.json file in your home directory to avoid typing yo
   const useCase = new GenerateCommitMessageFromFiles(fileDiffProvider, llm);
 
   try {
-    const spinner = await createSpinner(isQuiet, 'Generating commit message...');
+    const spinner = await createSpinner(!isQuiet, 'Generating commit message...');
 
     const message = await useCase.execute(isQuiet);
     spinner.succeed('✅ Commit message generated');

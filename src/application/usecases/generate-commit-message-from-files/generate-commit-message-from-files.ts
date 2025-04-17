@@ -15,7 +15,7 @@ export class GenerateCommitMessageFromFiles {
     const summaries: string[] = [];
 
     for (const file of diffs) {
-      const spinner = await createSpinner(isQuiet, `Summarizing ${file.filename}...`);
+      const spinner = await createSpinner(!isQuiet, `Summarizing ${file.filename}...`);
       const summary = await this.llm.summarizeFileChange(file.content, file.filename);
       summaries.push(summary);
       spinner.succeed(`Done: ${file.filename}`);
