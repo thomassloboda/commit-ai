@@ -1,6 +1,6 @@
 import { FileDiffProvider } from '@/domain/ports/file-diff-provider';
 import { CommitMessageLLM } from '@/domain/ports/commit-message-llm';
-import { createSpinner } from '@/utils/create-spinner';
+import { batchFilesByTokenLimit } from '@/utils/batch-files';
 
 export class GenerateCommitMessageFromFiles {
   constructor(
@@ -9,18 +9,12 @@ export class GenerateCommitMessageFromFiles {
   ) {
   }
 
-  async execute(isQuiet=false): Promise<string> {
-    const diffs = await this.fileDiffProvider.getFileDiffs();
+  async execute(): Promise<string> {
+    const changedFiles = await this.fileDiffProvider.getFileDiffs();
+    const model = 'gpt-4';
 
-    const summaries: string[] = [];
+    const combinedInput = batchFilesByTokenLimit(model, changedFiles);
 
-    for (const file of diffs) {
-      const spinner = await createSpinner(!isQuiet, `Summarizing ${file.filename}...`);
-      const summary = await this.llm.summarizeFileChange(file.content, file.filename);
-      summaries.push(summary);
-      spinner.succeed(`Done: ${file.filename}`);
-    }
-
-    return this.llm.generateMessageFromSummaries(summaries);
+    return await this.llm.generateCommitMessageFromDiff(combinedInput, model);
   }
 }

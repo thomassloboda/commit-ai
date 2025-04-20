@@ -2,15 +2,15 @@
   "name": "@thomassloboda/commit-ai",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
     "build": "tsup",
     "commit-ai": "ts-node -r tsconfig-paths/register src/cli/commit-ai.ts",
-    "test": "vitest",
-    "generate-readme": "ts-node ./scripts/generate-readme.ts",
-    "prepare": "npm run test && npm run generate-readme && npm run build"
+    "test": "vitest --run",
+    "prepare": "npm run test && npm run build"
   },
   "bin": {
-    "commit-ai": "dist/commit-ai.js"
+    "commit-ai": "./bin/commit-ai.js"
   },
   "keywords": [
     "cli",
@@ -48,9 +48,9 @@
     "vitest": "^3.1.1"
   },
   "dependencies": {
+    "commander": "^13.1.0",
     "copy-paste": "^1.5.3",
     "dotenv": "^16.5.0",
-    "minimist": "^1.2.8",
     "openai": "^4.95.0",
     "ora": "^8.2.0",
     "prompts": "^2.4.2"

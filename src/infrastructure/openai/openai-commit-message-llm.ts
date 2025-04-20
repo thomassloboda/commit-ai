@@ -51,4 +51,26 @@ export class OpenAICommitMessageLLM implements CommitMessageLLM {
 
     return response.choices[0].message.content?.trim() ?? ''
   }
+
+  async generateCommitMessageFromDiff(diff: string, model: string): Promise<string> {
+    const completion = await this.client.chat.completions.create({
+      model,
+      messages: [
+        {
+          role: 'system',
+          content: 'You are a commit message generator that follows Conventional Commits.',
+        },
+        {
+          role: 'user',
+          content: `Generate a commit message based on the following git diff:\n\n${diff}`,
+        },
+      ],
+      temperature: 0.2,
+    });
+
+    const message = completion.choices[0].message.content?.trim();
+    if (!message) throw new Error('No message returned by OpenAI.');
+
+    return message;
+  }
 }

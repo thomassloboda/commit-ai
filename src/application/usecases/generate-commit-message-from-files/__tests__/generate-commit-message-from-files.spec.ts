@@ -3,7 +3,6 @@ import {
 } from '@/application/usecases/generate-commit-message-from-files/generate-commit-message-from-files';
 import { FileDiffProvider } from '@/domain/ports/file-diff-provider';
 import { CommitMessageLLM } from '@/domain/ports/commit-message-llm';
-import { createSpinner } from '@/utils/create-spinner';
 
 vi.mock('@/utils/create-spinner', () => ({
   createSpinner: vi.fn(() => ({
@@ -30,6 +29,7 @@ describe('GenerateCommitMessageFromFiles', () => {
       generateMessageFromSummaries: vi
         .fn()
         .mockResolvedValue('feat: some global message'),
+      generateCommitMessageFromDiff: vi.fn().mockResolvedValue('feat: some global message'),
     };
   });
 
@@ -42,16 +42,6 @@ describe('GenerateCommitMessageFromFiles', () => {
 
     expect(mockDiffProvider.getFileDiffs).toHaveBeenCalled();
 
-    expect(mockLLM.summarizeFileChange).toHaveBeenCalledTimes(2);
-    expect(mockLLM.summarizeFileChange).toHaveBeenCalledWith('diff1', 'file1.ts');
-    expect(mockLLM.summarizeFileChange).toHaveBeenCalledWith('diff2', 'file2.ts');
-
-    expect(mockLLM.generateMessageFromSummaries).toHaveBeenCalledWith([
-      'summary for file1.ts',
-      'summary for file2.ts',
-    ]);
-
-    expect(createSpinner).toHaveBeenCalledTimes(2);
-    expect(createSpinner).toHaveBeenCalledWith(true, 'Summarizing file1.ts...');
+    expect(mockLLM.generateCommitMessageFromDiff).toHaveBeenCalledTimes(1);
   });
 });

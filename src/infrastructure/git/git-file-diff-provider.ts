@@ -7,7 +7,7 @@ const execAsync = promisify(exec);
 
 
 export class GitFileDiffProvider implements FileDiffProvider {
-  constructor(private readonly config: CommitAiConfig = {}) {
+  constructor(private readonly config: CommitAiConfig = {}, private readonly logger : undefined | Console) {
   }
 
   async getFileDiffs(): Promise<FileDiff[]> {
@@ -26,7 +26,7 @@ export class GitFileDiffProvider implements FileDiffProvider {
         IGNORED_FILENAMES.includes(file);
 
       if (shouldIgnore) {
-        console.log(`⏭️ Ignoring file: ${file}`);
+        this.logger?.log(`⏭️ Ignoring file: ${file}`);
         continue;
       }
 
