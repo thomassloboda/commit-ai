@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/thomassloboda/commit-ai/compare/v1.0.0...v1.0.1) (2025-04-20)
+
+
+### Bug Fixes
+
+* trigger version ([83fd51c](https://github.com/thomassloboda/commit-ai/commit/83fd51c05e40c826f5ace4eb11144e982f01201e))
+
 # 1.0.0 (2025-04-20)
 
 
