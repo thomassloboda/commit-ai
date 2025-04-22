@@ -25,13 +25,13 @@ npm link
 ### Global (published)
 
 ```bash
-npm install -g commit-ai
+npm install -g @thomassloboda/commit-ai
 ```
 
 Or via NPX:
 
 ```bash
-npx commit-ai
+npx @thomassloboda/commit-ai
 ```
 
 ---
@@ -39,7 +39,7 @@ npx commit-ai
 ## 💡 Usage
 
 ```bash
-commit-ai [options]
+@thomassloboda/commit-ai [options]
 ```
 
 Generates a commit message based on your current staged changes.
@@ -108,4 +108,4 @@ commit-ai --print-only
 
 ## 📝 License
 
-MIT
+[MIT](./LICENCE.md)
